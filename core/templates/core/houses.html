@@ -1,0 +1,79 @@
+{% extends 'core/base.html' %}
+{% block title %}Available houses{% endblock %}
+{% load static %}
+
+{% block content %}
+    <main class="houses">
+        <!--Filter-->
+        <div class="filter">
+            <div class="container filter-container">
+                <p class="filter-title">Filter cost based on your desired range</p>
+                <form method="GET" action="{% url 'houses' %}">
+                    <input type="text" name="min_cost" placeholder="Min Cost" class="filter-min">
+                    <input type="text" name="max_cost" placeholder="Max Cost" class="filter-max">
+                    <button class="filter-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                {% if state%}
+                <form method="GET" action="{% url 'houses' %}">
+                    <input type="submit" value="Clear Filters" name="clear_filters" class="clear_filters" />
+                </form>
+                {% endif %}
+            </div>
+
+            <div class="container filter-divider"></div>
+        </div>
+        <!--End of filter-->
+        
+        <!--Houses wrapper-->
+        <div class="houses-wrapper">
+            <div class="container houses-w-container">
+                {% for house in houses %}
+               
+                    <div class="single-w-house">
+                        <a class="house-w-link" href="{% url 'house' house.category.slug house.slug %}">
+                        <img class="house-w-image" src="{{house.image.url}}" alt="" />
+                        <p class="house-w-title">{{house.title}}</p>
+                     </a>
+                        <div class="ammenities">
+                            <p><i class="fa-solid fa-bed"></i> {{house.bedrooms}} bedrooms</p>
+                            <p><i class="fa-solid fa-wifi"></i> Free WI-FI</p>
+                        </div>
+                        <div class="location-w-cost">
+                            <p><i class="fa-solid fa-location-dot"></i> {{house.location}}</p>
+                            <p class="house-w-cost">Kes {{house.cost}}</p>
+                        </div>
+                        <div class="like-and-availability">
+                            <div>
+                                {% if house.availability == True %}
+                                <p class="availabile">available <i class="fa-solid fa-circle-check"></i></p>
+                                {% else %}
+                                <p class="not-availabile">Not available <i class="fa-solid fa-circle-xmark"></i></p>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% if property.num_of_like == 0 %}
+                                <a class="like_house" href="{% url 'like_house' house.id %}">
+                                    <p><i class="fa-regular fa-heart"></i> No likes</p>
+                                </a>
+                                {% elif property.num_of_like == 1 %}
+                                <a class="like_house" href="{% url 'like_house' house.id %}">
+                                    <p><strong><i class="fa-regular fa-heart"></i></strong> {{house.likes}} like</p>
+                                </a>
+                                {% else %}
+                                <a class="like_house" href="{% url 'like_house' house.id %}">
+                                    <p><i class="fa-regular fa-heart"></i> {{house.likes}} likes</p>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+               
+                {% endfor %}
+            </div>            
+        </div>
+        <div class="container btn-b-container">
+            <button class="house-load-more-btn">Load More</button>
+        </div>
+        <!--End of houses wrapper-->
+    </main>
+{% endblock %}

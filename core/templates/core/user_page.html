@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% block title %} Joshua Kibera {% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="user_profile_page">
+    <div class="container user-info-wrapper">
+        <div class="user-profile-image-section">
+            <img class="user-profile-p-image" src="{{profile.image.url}}" alt="" />
+        </div>
+        <div class="user-profile-infor">
+            <div class="user-infor-header">
+                <h3><i class="fa-solid fa-calendar-days"></i> April ,2023</h3>
+                <h3><span>Name:</span> {{profile.user.username}}</h3>
+            </div>
+            <p class="user-p-p-description"><span>Phone No:</span> {{profile.phone}}</p>
+            <p class="user-p-p-description"><span>About:</span> {{profile.about}}</p>
+            <p class="user-p-p-description"><span>Joined:</span> <span class="clearance-status pending">7 months ago</span></p>
+             <a href="tel:{{profile.phone}}" class="contact-btn">Contact <i class="fa-solid fa-print"></i></a>
+        </div>
+    </div>
+</main>
+{% endblock %}

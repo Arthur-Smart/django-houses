@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% block title %}Message-Jane Mwaura{% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="users-chat">
+    <div class="messager-wrapper">
+        <div class="chat-wrapper">
+            <div class="messagers-name">
+                You are on chat with Mary Njeri
+            </div>
+            <div class="sent-messages">
+                <div class="single-chat-wrapper">
+                    <p class="chat">I want my room shower to be fixed</p>
+                    <p class="chat-date">Sun 12:34pm</p>
+                </div>
+
+                <div class="single-chat-wrapper sender">
+                    <p class="chat">I want my room shower to be fixed</p>
+                    <p class="chat-date">Sun 12:34pm</p>
+                </div>
+
+                <div class="single-chat-wrapper">
+                    <p class="chat">I want my room shower to be fixed</p>
+                    <p class="chat-date">Sun 12:34pm</p>
+                </div>
+            </div>
+            <div class="send-message-container">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <!--<input class="send-message-input" type="text" placeholder="Type Message..."/>-->
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

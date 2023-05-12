@@ -1,0 +1,162 @@
+{% extends 'core/base.html' %}
+{% load category %}
+{% block title %} Home {% endblock %}
+{% load static %}
+{% block content %}
+    <main class="index">
+        <div class="hero-section">
+            <img class="hero-image" src="{% static 'images/homebg.jpg' %}" alt="Rentals"/>
+            <div class="container home-hero-container">
+                <p class="welcome-title">We're confident that you'll find your <br /> dream home in no time!</p>
+                <p class="welcome-description">Whether you're searching for a pet-friendly apartment, a spacious house or a luxurious vacation rental, our platform<br /> has got you covered. Our comprehensive filters allow you to narrow down 
+                your options <br />based on your budget, location, amenities and more. </p>
+                <form id="search_form" method="GET" action="/search/">
+                <div class="filters">
+                    <input id="location_input" class="filter-input" name="location" type="text" placeholder="Enter location eg Nairobi"/>
+                    <select id="category_input" class="filter-select" name="category" placeholder="--Select--s">
+                        <option value="Bedsitter">Bedsitter</option>
+                        <option value="Self Contained">Self-contained</option>
+                        <option value="vacational">Vocational</option>
+                        <option value="Flats">Flats</option>
+                    </select>
+                </div>
+                <button onclick = "checkInputs()" class="search-btn">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <!--Category section-->
+        <div class="category-section">
+            <div class="container category-container">
+                <p class="category-title">Happy Home Hunting</p>
+                <p class="category-paragraph">Experience the joy of finding your perfect home</p>
+                <div class="tab"></div>
+                <div class="category-content-wrapper">
+                    {% category %}                  
+                    <!--<div class="single-category">
+                        <img class="category-image" src="{% static 'images/homebg.jpg' %}" alt="" />
+                        <div class="bottom-text">
+                            <p>Apartments</p>
+                            <p>Your comfort mattter!</p>
+                        </div>
+                    </div>-->
+                </div>
+                <a href="{% url 'houses' %}"><button class="all-h-btn">All houses</button></a>
+            </div>
+        </div>
+
+        <!--End of category section-->
+
+        <!--Random properties-->
+        <div class="random-properties">
+            <div class="container random-p-container">
+                <p class="category-title">Grab a home permanently!</p>
+                <p class="category-paragraph">Become your own landlord by buying a house.The following are on sale</p>
+                <div class="tab"></div>
+                <div class="houses-i-wrapper">
+                    {% for random_property in random_properties %}
+                    <a class="property-link" href="{% url 'property_page' random_property.slug %}">
+                        <div class="single-house">
+                            <img class="house-image" src="{{random_property.image.url}}" alt=""/>
+                            <div class="house-content">
+                                <div class="title-price">
+                                    <p>{{random_property.title}}</p>
+                                    <p>Kes {{random_property.cost}}</p>
+                                </div>
+                                <p class="location-paragraph"><i class="fa-solid fa-location-dot"></i>{{random_property.location}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+
+                <a href="{% url 'properties' %}"><button class="all-p-btn">All properties</button></a>
+            </div>
+        </div>
+        <!--End of Random properties-->
+
+        <!--Video showcase-->
+        <div class="video-showcase">
+            <div class="container video-container">
+                <div class="video-c-left">
+                    <p class="video-c-title">Comfy Apartments - Nairobi -Waiyaki highway</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo qui odio ab a quaerat quam optio veniam voluptatum, magni itaque, amet vel dolor nulla iusto repudiandae officia inventore veritatis accusantium ex quas eveniet. Dicta iusto consectetur totam magnam cum possimus voluptas amet ad facilis. Nihil illum, odio sequi, ut aut maxime excepturi tenetur laborum libero facere impedit enim, aperiam mollitia exercitationem magni? Quaerat voluptates fugit, atque eveniet alias cum perspiciatis esse quo, incidunt facere ut blanditiis corrupti minima. Voluptas, consectetur?</p>
+                    <div class="video-owner-details">
+                        <img class="video-o-image"src="{% static 'images/homebg.jpg' %}" alt="" />
+                        <div class="name-phone">
+                            <p>Joshua Akoth</p>
+                            <p>Property owner | <span>Call me</span></p>
+                        </div>
+                    </div>
+                </div>
+                <video src="{% static 'images/video.mp4' %}"  class="video-right" controls/>
+            </div>
+        </div>
+        <!--End of video showcase-->
+        <!--Random Owners-->
+        <div class="random-owners">
+            <div class="container">
+                <p class="category-title">Grab a home permanently!</p>
+                <p class="category-paragraph">Become your own landlord by buying a house.The following are on sale</p>
+                <div class="tab"></div>
+                <div class="single-service-wrapper container">
+                    <div class="single-service"> 
+                        <div class="title-icon">
+                            <h4>Time-Saving</h4>
+                            <p><i class="fa-solid fa-hourglass-half fa-lg"></i></p>
+                        </div>
+                        <p class="service-description">Our focus is streamlining the house-hunting process, allowing you to quickly and easily find your dream home without wasting time on irrelevant listing.</p>                
+                    </div>
+                    <div class="single-service">
+                        <div class="title-icon">
+                            <h4>Comprehensive Listing</h4>
+                            <p><i class="fa-regular fa-rectangle-list fa-lg"></i></p>
+                        </div>
+                        <p class="service-description">We provide you with an extensive collection of home listing with detailed information, making it easy for you to narrow down your search and find the perfect match.</p>
+                    </div>
+                    <div class="single-service">
+                        <div class="title-icon">
+                            <h4>Real-Time Updates</h4>
+                            <p><i class="fa-solid fa-arrows-spin fa-lg"></i></p>
+                        </div>
+                        <p class="service-description">Real-time updates ensuring that you have the most up-to-date information on available homes and making it easier for you to make informed decisions.</p>
+                    </div>
+                    <div class="single-service">
+                        <div class="title-icon">
+                            <h4>Interactive Virtual Tours</h4>
+                            <p><i class="fa-regular fa-file-video fa-lg"></i></p>
+                        </div>
+                        <p class="service-description">Interactive virtual tours that allow you to explore homes from the comfort of your own device, saving you the hassle of scheduling in-person visit to every potential home.</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <!--End of random owners-->
+    </main>
+{% endblock %}
+{% block scripts %}
+<script>
+    // const location_input = document.getElementById('location_input').value.trim()
+    // const category_input = document.getElementById('category_input').value.trim()
+    // const form = document.getElementById('search_form')
+
+    // form.addEventListener('submit', (event) => {
+        
+
+    //     if (location_input == ''){
+    //         event.preventDefault();
+    //         alert('Please fill the Location and Category inputs to continue!')
+    //         location_input.focus()
+    //     } else {
+    //         console.log('It works')
+    //         event.submit();
+    //     }
+    // })
+    
+    // const checkInputs = () => {
+    //     if(location === '' && category ===''){
+    //         alert('Please fill the inputs to continue')
+    //     }
+    // }
+</script>
+{% endblock %}

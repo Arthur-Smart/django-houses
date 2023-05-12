@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %} Create {% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="create-content">
+    <div class="create-wrapper">
+        <form class="create-content-form">
+            <input type="text" placeholder="Enter property title" />
+            <input type="text" placeholder="Enter location" />
+            <input type="text" placeholder="Enter cost" />
+            <label class="label">Profile Image</label>
+            <input type="file" name="image" />
+            <label class="label">Showcase Images</label>
+            <input type="file" name="images" multiple />
+            <textarea placeholder="Write description..."></textarea>
+            <button class="create-content-btn">Publsih</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

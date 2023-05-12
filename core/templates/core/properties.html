@@ -1,0 +1,63 @@
+{% extends 'core/base.html' %}
+{% block title %} Properties on sale {% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="properties">
+    <!--Properties filter section-->
+    <div class="properties-filter ">
+        <div class="container properties-filter-container">
+            <p class="filter-title">Filter cost based on your desired range</p>
+            <form method="GET" action="{% url 'properties' %}">
+                <input type="text" name="min_cost" placeholder="Min Cost" value="{{ request.GET.min_cost }}" class="filter-min">
+                <input type="text" name="max_cost" placeholder="Max Cost" value="{{ request.GET.max_cost }}" class="filter-max">
+                <button class="filter-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            {% if state%}
+            <form method="GET" action="{% url 'properties' %}">
+                <input type="submit" value="Clear Filters" name="clear_filters" class="clear_filters" />
+            </form>
+            {% endif %}
+        </div>
+        
+        <div class="container filter-divider"></div>
+    </div>
+    <!--End of properties filter section-->
+
+    <!--Properties wrapper-->
+    <div class="properties-wrapper">
+        <div class="container properties-wrapper-container">
+            {% for property in properties %}
+           
+                <div class="property">
+                    <a class="property-link" href="{% url 'property_page' property.slug %}">
+                        <img class="propert-w-image" src="{{property.image.url}}" alt=""/>                
+                        <h3>{{property.title}}</h3>
+                        <p class="property-location"><i class="fa-solid fa-location-dot"></i> {{property.location}} </p>
+                    </a>
+                    <div class="property-price-image">
+                        <p class="property-price">Kes {{property.cost}}</p>
+                        <img class="property-owner-image" src="{{property.profileImage.url}}" alt=""/>
+                    </div>
+                    
+                    {% if property.num_of_like == 0 %}
+                    <a class="like-link"  href="{% url 'like' property.id %}"><p><i class="fa-regular fa-heart"></i> No likes</p></a>
+                    {% elif property.num_of_like == 1 %}
+                    <a class="like-link" href="{% url 'like' property.id %}"><p><strong><i class="fa-regular fa-heart"></i></strong> {{property.num_of_like}} like</p></a>
+                    {% else %}
+                    <a class="like-link" href="{% url 'like' property.id %}"><p><i class="fa-regular fa-heart"></i> {{property.num_of_like}} likes</p></a>
+                    {% endif %}
+                    
+                </div>
+           
+            {% endfor %}
+        </div>
+    </div>
+    <!--End of properties wrapper-->
+    <script>
+        function HandleToggle(){
+            console.log('it works')
+        }
+    </script>
+</main>
+{% endblock %}

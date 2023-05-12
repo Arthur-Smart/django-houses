@@ -1,0 +1,230 @@
+/*House header styling*/
+.house-page {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.house-owner{
+    width:100%;
+    padding:40px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.house-owner-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.houser-owner-detail{
+    display: flex;
+}
+
+.house-owner-image{
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor:pointer;
+    /*border: 2px solid rgb(1, 167, 1);*/
+}
+
+.house-owner-name{
+    margin-left: 5px;
+}
+
+.house-owner-name h4{
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.856);
+}
+
+.house-owner-btns{
+    display: flex;
+}
+
+.house-owner-call-btn{
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    padding:13px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    color:white;
+    font-size: 20px;
+    cursor:pointer;
+    background-color: rgb(1, 167, 1);
+}
+
+.house-owner-message-btn{
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    border-radius: 50%;
+    padding: 13px 4px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(83, 83, 247);
+}
+
+.house-divider{
+    margin: 10px 0px;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.356);
+}
+/*End of house header styling*/
+
+/*House content styling*/
+.house-content-wrapper{
+    width:100%;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.house-content-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.house-content-left{
+    width:47%;
+}
+
+.house-content-image{
+    width:100%;
+    height:50vh;
+    object-fit: cover;
+}
+
+.images-carousel{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap:4px;
+}
+
+.single-carousel-img{
+    position: relative;
+    width:150px;
+    height:13vh;
+    object-fit: cover;
+    opacity:0.8;
+}
+
+.single-carousel-img::after{
+    position: absolute;
+    content:'';
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: #000;
+    z-index:2;
+}
+
+.house-content-right{
+    width:47%;
+}
+
+.house-content-right h4{
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.856);
+}
+
+.house-s-ammenities-features{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.house-s-ammenities{
+    width:100%;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap:7px;
+}
+
+.house-s-ammenities p{
+    width:max-content;
+    padding:10px 7px;
+    color:rgba(0, 0, 0, 0.856);
+    border-radius: 50px;
+    border: 1px solid rgb(1, 167, 1);
+}
+
+.house-content-about{
+    margin-top: 10px;
+}
+
+.house-availability-cost{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.house-content-cost{
+    padding:10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius:4px;
+    color:white;
+    background-color: rgb(1, 167, 1);
+}
+
+.house-content-availability{
+    margin-left: 10px;
+}
+
+.take-room-btn{
+    margin-top: 10px;
+    width:97%;
+    padding:13px 7px;
+    border: 1px solid rgb(83, 83, 247);
+    border-radius: 4px;
+    color: white;
+    background: rgb(83, 83, 247);
+    cursor:pointer;
+}
+
+/*End of house content styling*/
+
+/*
+===============================================
+MEDIA QUERIES
+===============================================
+*/
+
+
+@media screen and (max-width:1086px){
+    .house-content-container{
+        flex-direction: column;
+    }
+
+    .house-content-left {
+        width: 100%;
+    }
+
+    .house-content-right {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:340px){
+.house-availability-cost{
+    flex-direction: column;
+    align-items: flex-start;
+}
+}

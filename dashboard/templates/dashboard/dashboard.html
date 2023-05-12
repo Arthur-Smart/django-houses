@@ -1,0 +1,116 @@
+{% extends 'core/base.html' %}
+{% block title %}Joshua Okoth{% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="dashboard">
+    <!--Dashboard owner details-->
+    <div class="dashboard-owner-details">
+        <div class="container  dashboard-owner-container">
+            <div class="dashboard-owner-name-image">
+                <img class="dashboard-owner-pic" src="{{user_profile.image.url}}" alt=""/>
+                <div class="dashboard-owner-name">
+                    <h2>{% firstof user.get_full_name user.username %}</h2>
+                    <p>You are an owner</p>
+                </div>
+            </div>
+            <a href="{% url 'created_property' %}"><button class="account-btn">Properties</button></a>
+        </div>
+        <div class="container dashboard-divider"></div>
+    </div>
+    <!--End of dashboard owner details-->
+
+    <!--Dashboard owner content-->
+    <div class="dashboard-owner-content">
+        <div class="container dashboard-owner-content-container">
+           <!--<div class="dashboard-messages">
+                <div class="unread-messages"><p>3 Unread Messages <i class="fa-solid fa-message fa-shake"></i></p></div>
+                <div class="dashboard-owner-messages">
+                    {% for b in booking %}
+                        <div class="text">
+                            <div class="message-img-container">
+                                <img class="message-image" src="{% static 'images/homebg.jpg' %}"/>
+                            </div>
+                            <div class="message-details">
+                                <h4>Jame Kimani</h4>
+                                <p>Lorem ipsum dolor sit amet consecte</p>
+                               
+                            </div>
+                        </div>   
+                    {% endfor  %}  
+                </div>
+            </div>-->
+            
+            <div class="dashboard-owner-uploads">
+                <div class="filter-menu">
+                    <!-- <form method="GET" action="/">
+                        <input name="filter-houses" class="filter-upload-input" type="text" placeholder="Search filter..."/>
+                        <button>Search</button>
+                    </form> -->
+                    <a href="{% url 'create-house' %}" class="create-menu">
+                        <p><i class="fa-solid fa-plus"></i></p>
+                    </a>
+                    <a class="tenant-navigate" href="#tenants"><p >View/Add tenant</p></a>
+                </div>
+                {% if messages %}
+                <div class="messages-feedback">                    
+                        {% for message in messages %}
+                            <p>{{message}} <i class="fa-solid fa-thumbs-up"></i></p>
+                        {% endfor %}                    
+                </div>
+                {% endif %}
+                {% if request.user.houses.all %}
+                <div class="dashboard-properties-wrapper">
+                    {% for house in request.user.houses.all %}
+                    <div class="single-dashboard-contet">
+                        <img class="dashboard-c-o-image" src="{{house.image.url}}" alt=""/>
+                        <div class="single-d-c-data">
+                            <h4>{{house.title}}</h4>
+                            <div class="single-d-icons">
+                                <p><i class="fa-solid fa-heart"></i> {{house.likes}}</p>
+                                <div class="single-d-menu">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-d-edit-delete">
+                            <a href="{% url 'edit-house' house.id %}"><p><i class="fa-solid fa-pen-to-square"></i></p></a>
+                            <a href="{% url 'delete-house' house.id %}"><p><i class="fa-solid fa-trash"></i></p></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="dashboard-properties-wrapper">
+                    <p style="text-align: center;">You have no houses created yet.Create one!</p>
+                </div>
+                {% endif %}
+            </div>
+            <div id="tenants" class="dashboard-owner-tenants">
+                <div class="tenants-number-add">
+                    <p>You have 20 tenants <i class="fa-solid fa-users"></i></p>
+                    <a class="add-tenant-btn" href="{% url 'create_tenant' %}"><h4 >Add new tenant</h4></a>
+                </div>
+                <div class="tenants-details-wrapper">
+                    {% for tenant in  user.tenants.all %}
+                    <div class="tenant-details">
+                        <div class="tenant-image-name">
+                            <img class="tenant-image" src="{{tenant.user_image.url}}" alt=""/>
+                            <div class="tenant-name-room">
+                                <a href="{% url 'tenant' tenant.slug %}"><h4>{{tenant.name}}</h4></a>
+                                <p>Room No:{{tenant.room_No}}</p>
+                            </div>
+                        </div>
+                        <div class="tenant-contacts">
+                            <p><i class="fa-solid fa-phone"></i></p>
+                            <p><i class="fa-solid fa-message"></i></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of dashboard owner content-->
+</main>
+{% endblock %}

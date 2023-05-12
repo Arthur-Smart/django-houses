@@ -1,0 +1,14 @@
+{% load static %}
+{% for category in categories %}
+<a href="{% url 'house_category' category.slug %}">
+<div class="single-category">
+   
+    <img class="category-image" src="{{category.image.url}}" alt="" />
+    <div class="bottom-text">
+        <p>{{category.title}}</p>
+        <p>{{category.short_description}}</p>
+        <p></p>
+    </div>
+</div>
+</a>
+{% endfor %}

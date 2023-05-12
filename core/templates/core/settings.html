@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% block title %}Joshua Akothe{% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="settings">
+    <div class="user-settings">
+        <img class="settings-image" src="{{user_profile.image.url}}" alt=""/>
+    </div>
+    
+    <div class="user-settings">
+        <form class="form-setting" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <!-- <label>Upload profile pic</label>
+            <input class="settings-input" name="image" type="file"/>
+            <textarea class="settings-textarea" name="about" value="{{logged_in_user.about}}" placeholder="Write your about">{{logged_in_user.about}}</textarea> -->
+            <button class="settings-btn">Update</button>
+        </form>
+    </div>
+    
+    <div class="user-settings">
+        <button class="settings-delete-btn">Delete your account</button>
+    </div>
+</main>
+{% endblock %}

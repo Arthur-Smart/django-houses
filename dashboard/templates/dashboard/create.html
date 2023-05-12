@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block title %} Create {% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="create-content">
+    <div class="create-wrapper">
+        <form method="POST" enctype="multipart/form-data" class="create-content-form">
+            <div class="create-edit-container">
+                <h4>{{header}}</h4>
+            </div>
+            {% csrf_token %}
+            <div class="inputs-form">
+                {{form.as_p}}
+            </div>
+            
+            <!--<input type="text" placeholder="Enter property title"/>
+            <input class="create-content-form-input"  type="text" placeholder="Enter location"/>
+            <input class="create-content-form-input"  type="text" placeholder="Enter cost"/>
+            <label class="label">Profile Image</label>
+            <input class="create-content-form-input"  type="file" name="image"/>
+            <label class="label">Showcase Images</label>
+            <input class="create-content-form-input"  type="file" name="images" multiple/>
+            <textarea placeholder="Write description..."></textarea>-->
+            <button class="create-content-btn">Publsih</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

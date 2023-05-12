@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% block title %}{{house.title}} {% endblock %}
+{% load static %}
+
+{% block content %}
+<main class="house-page">
+    <!--House header content-->
+    <div class="house-owner">
+        <div class="container house-owner-container">
+            <div class="houser-owner-detail">
+                <a href="{% url 'user_profile' house.slug %}"><img class="house-owner-image" src="{{house.owner_pic.url}}" alt="Rentals" /></a>
+                <div class="house-owner-name">
+                    <h4>{{house.owner_name}}</h4>
+                    <p>LandLord</p>
+                    {{category.title}}
+                </div>
+            </div>
+            <!--<div class="house-owner-contacts">
+                <div class="house-owner-btns">
+                    <button class="house-owner-call-btn"><i class="fa-solid fa-phone"></i></button>
+                    <button class="house-owner-message-btn"><i class="fa-solid fa-comments"></i></button>
+                </div>
+            </div>-->
+        </div>
+        <div class="container house-divider"></div>
+    </div>
+    <!--End of header content-->
+
+    <!--House content & description-->
+    <div class="house-content-wrapper">
+        <div class="container house-content-container">
+            <div class="house-content-left">
+                <img class="house-content-image" src="{{house.image.url}}" alt="" />
+                <div class="images-carousel">
+                    <img class="single-carousel-img" src="{% static 'images/homebg.jpg' %}" alt="" />
+                    <img class="single-carousel-img" src="{% static 'images/homebg.jpg' %}" alt="" />
+                    <img class="single-carousel-img" src="{% static 'images/homebg.jpg' %}" alt="" />
+                    <img class="single-carousel-img" src="{% static 'images/homebg.jpg' %}" alt="" />
+                    <img class="single-carousel-img" src="{% static 'images/homebg.jpg' %}" alt="" />
+                </div>
+            </div>
+            <div class="house-content-right">
+                <h4>{{house.title}}</h4>
+                <p><i class="fa-solid fa-location-dot"></i> {{house.location}}</p>
+                <div class="house-s-ammenities-features">
+                    <h5>Ammenities & Feature</h5>
+                    <div class="house-s-ammenities">
+                        <p>2 Bedroom</p>
+                        <p>Regular water</p>
+                        <p>Free WI-FI</p>
+                        <p>Free DSTV</p>
+                    </div>
+                </div>
+                <p class="house-content-about">{{house.description}}</p>
+                <div class="house-availability-cost">
+                    <p class="house-content-cost">Kes {{house.cost}} / Month</p>
+                    {% if house.availability == True %}
+                    <p class="house-content-availability">Available <i class="fa-solid fa-circle-check"></i></p>
+                    {% else %}
+                    <p class="house-content-availability">Not available <i class="fa-solid fa-circle-xmark"></i></p>
+                    {% endif %}
+                    
+                </div>
+                <a href="{% url 'user_profile' house.slug %}"><button class="take-room-btn">Contact owner</button></a>
+            </div>
+        </div>
+    </div>
+    <!--End of house content & description-->
+</main>
+{% endblock %}
