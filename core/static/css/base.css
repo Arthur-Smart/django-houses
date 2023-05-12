@@ -70,6 +70,7 @@ font-weight: 600;
 
 .join{
     width:100px;
+    margin-right: 10px;
     padding:10px 10px;
     border:1px solid rgb(1, 167, 1);
     color:white;
