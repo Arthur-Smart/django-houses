@@ -7,7 +7,7 @@
     <div class="dashboard-owner-details">
         <div class="container  dashboard-owner-container">
             <div class="dashboard-owner-name-image">
-                <img class="dashboard-owner-pic" src="{% static 'images/homebg.jpg' %}" alt="" />
+                <img class="dashboard-owner-pic" src="{{property.profileImage.url}}" alt="" />
                 <div class="dashboard-owner-name">
                     <h2>{% firstof user.get_full_name user.username %}</h2>
                     <p>You are an owner</p>

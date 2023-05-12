@@ -37,6 +37,8 @@
                 <a href ="{% url 'dashboard' %}" title="User Account"  class="nav-account-btn" ><i class="fa-solid fa-circle-user"></i></a>
                 <a href ="{% url 'logout' %}" title="Logout"  class="logout-account-btn" ><i class="fa-solid fa-right-from-bracket"></i></a>
                 {% else %}
+                    <a href="{% url 'houses' %}" title="Houses" class="nav-link-btn">Houses</a>
+                    <a href="{% url 'properties' %}" title="User Account" class="nav-link-btn">Properties</a>
                 <a href="{% url 'register' %}"><button class="join">Join</button></a>
                 <a href="{% url 'login' %}"><button class="sign-in">Sign in</button></a>
                 {% endif %}
@@ -64,6 +66,10 @@
                     <a href="{% url 'index' %}" title="Home" class="unauth-home-btn">
                         <p><i class="fa-solid fa-house"></i> Home</p>
                     </a>
+                <a href="{% url 'houses' %}" title="Houses" class="nav-link-btn-mobile"><i class="fa-solid fa-house-circle-check"></i>
+                    Houses</a>
+                <a href="{% url 'properties' %}" title="User Account" class="nav-link-btn-mobile"><i
+                        class="fa-solid fa-land-mine-on"></i> Properties</a>
                 <a href="{% url 'register' %}"><button class="join-mobile">Join</button></a>
                 <a href="{% url 'login' %}"><button class="sign-in-mobile">Sign in</button></a>
                 </div>
