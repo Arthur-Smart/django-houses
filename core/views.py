@@ -55,6 +55,7 @@ def search(request):
         return render(request, 'core/search.html', {'houses':houses})
 
 #Create user profile
+@login_required(login_url='login')
 def user_profile(request):
     user_profile = Userprofile.objects.get(user=request.user)
     print(user_profile)

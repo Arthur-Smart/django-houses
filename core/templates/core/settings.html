@@ -4,11 +4,13 @@
 
 {% block content %}
 <main class="settings">
+    <h4>Create or Update your profile</h4>
     <div class="user-settings">
         <img class="settings-image" src="{{user_profile.image.url}}" alt=""/>
     </div>
     
     <div class="user-settings">
+        
         <form class="form-setting" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}
@@ -19,8 +21,8 @@
         </form>
     </div>
     
-    <div class="user-settings">
+    <!-- <div class="user-settings">
         <button class="settings-delete-btn">Delete your account</button>
-    </div>
+    </div> -->
 </main>
 {% endblock %}
