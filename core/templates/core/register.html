@@ -11,9 +11,9 @@
 </head>
 <body>
     <main class="register">
-        <div class="container">
+            <a class="auth-name" href = "{% url 'index' %}"><h2 class="auth-name">Home <span>Finder</span></h2></a>
             <h4>Register To Get Started With Home Finder</h4>
-        </div>        
+                
         <form class="register-form" method="POST" action=".">
             {% csrf_token %}
             <input type="text" name="username" placeholder="Enter username eg John(Not 2 words)" required/>

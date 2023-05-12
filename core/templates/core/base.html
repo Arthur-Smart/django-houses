@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <link rel="stylesheet" href="{% static 'css/houses.css' %}" />
@@ -27,7 +28,7 @@
     <nav>
         <div class="container nav-container">
             <div class="nav-left">
-                <a href="{% url 'index' %}" class="logo"><p >Home<span>Finder</span></p></a>
+                <a href="{% url 'index' %}" class="logo"><p >Home<span>Finder</span></p></a>                
             </div>
             <div class="nav-right">
                 {% if request.user.is_authenticated %}
@@ -36,6 +37,32 @@
                 {% else %}
                 <a href="{% url 'register' %}"><button class="join">Join</button></a>
                 <a href="{% url 'login' %}"><button class="sign-in">Sign in</button></a>
+                {% endif %}
+            </div>
+            <p class="menu-bar-open" ><i class="fa-solid fa-bars-staggered fa-2x"></i></p>
+        </div>
+        <!-- Mobile menu -->
+        <div class="moblie-menu">
+            <div class="mobile-menu-top">
+                <p class="close-menu-btn"><i class="fa-solid fa-circle-xmark"></i></p>
+                <p class="mobile-menu-title">Account <span>Manager</span></p>
+            </div>            
+            <div>
+                {% if request.user.is_authenticated %}
+                <div class="mobile-logout-account">
+                <a href="{% url 'dashboard' %}" title="User Account" class="nav-mobile-account-btn mobile-links"><p><i class="fa-solid fa-circle-user fa-lg"></i> Dashboard</p></a>
+                <a href="{% url 'index' %}" title="Logout" class="logout-mobile-account-btn mobile-links"><p><i class="fa-solid fa-house"></i> Home</p></a>
+                <a href="{% url 'logout' %}" title="Logout" class="logout-mobile-account-btn mobile-links"><p><i class="fa-solid fa-right-from-bracket"></i> Logout</p></a>
+                <a href="{% url 'settings' %}" title="Logout" class="settings-mobile-account-btn mobile-links"><p><i class="fa-solid fa-gear"></i> Settings</p></a>
+                </div>
+                {% else %}
+                <div class="join-singin">
+                    <a href="{% url 'index' %}" title="Home" class="unauth-home-btn">
+                        <p><i class="fa-solid fa-house"></i> Home</p>
+                    </a>
+                <a href="{% url 'register' %}"><button class="join-mobile">Join</button></a>
+                <a href="{% url 'login' %}"><button class="sign-in-mobile">Sign in</button></a>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -49,20 +76,43 @@
                 <p class="footer-short-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, fuga!</p>
                 <p class="copy-right">&copy;Copyright 2023.</p>
                 <div class="social-icons">
-                    <p class="icon"><i class="fa-brands fa-square-facebook"></i></p>
-                    <p class="icon"><i class="fa-brands fa-square-instagram"></i></p>
-                    <p class="icon"><i class="fa-brands fa-square-twitter"></i></p>
-                    <p class="icon"><i class="fa-brands fa-linkedin"></i></p>
+                    <a class="icon" href="https://web.facebook.com/profile.php?id=100064319250841" target="_blank" ><p ><i class="fa-brands fa-square-facebook"></i></p></a>
+                    <a class="icon" href="https://www.instagram.com/exquitech.co/"><p ><i class="fa-brands fa-square-instagram"></i></p></a>
+                    <a class="icon" href="https://www.instagram.com/exquitech.co/"><p ><i class="fa-brands fa-square-twitter"></i></p></a>
+                    <a class="icon" href="https://www.linkedin.com/in/arthur-mwangi-7a80761bb/" target="_blank"><p ><i class="fa-brands fa-linkedin"></i></p></a>
                 </div>
             </div>
             <div class="footer-right">
                 <p class="quick-links">Quick Links</p>
-                <p class="link">Renting apartmets</p>
-                <p class="link">Property on sale</p>
+                <a href="{% url 'houses' %}" ><p class="link">Renting apartmets</p></a>
+                <a href="{% url 'properties' %}"> <p class="link">Property on sale</p></a>
             </div>
         </div>
     </footer>
-    {% block scripts %}
+    {% block scripts %}  
+  
     {% endblock %}
+    <script>
+        const openMenuBtn = document.getElementsByClassName('menu-bar-open')
+        const closeMenuBtn = document.getElementsByClassName('close-menu-btn')
+        const menu = document.getElementsByClassName('moblie-menu')
+        const mobileLinks = document.getElementsByClassName('mobile-links')
+
+
+        openMenuBtn[0].addEventListener("click", function(event){
+           menu[0].classList.add('show')
+        })
+
+        closeMenuBtn[0].addEventListener("click", function(event){
+            menu[0].classList.remove('show')
+        })
+
+        for (var i = 0; i < mobileLinks.length; i++) {
+                mobileLinks[i].addEventListener('click', () => {
+                    menu[0].classList.remove('show')
+                });
+            }
+    </script>
+    
 </body>
 </html>
