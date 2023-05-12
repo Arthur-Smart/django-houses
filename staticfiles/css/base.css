@@ -48,6 +48,25 @@ nav{
     color:gray;
 }
 
+.nav-link-btn{
+    font-weight: 600;
+    text-decoration: none;
+    color:rgba(0, 0, 0, 0.904);
+    margin-right: 17px;
+}
+
+.nav-link-btn-mobile{
+font-weight: 600;
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
+}
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .join{
     width:100px;
