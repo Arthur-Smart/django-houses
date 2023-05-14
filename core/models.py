@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.db import models
-import uuid
+# import uuid
 
 # Create your models here.
 class Userprofile(models.Model):
@@ -18,7 +18,7 @@ class Userprofile(models.Model):
 
 
 class Properties(models.Model):
-    id=models.UUIDField(primary_key=True,default=uuid.uuid4,unique=True, max_length=36)
+    # id=models.UUIDField(primary_key=True,default=uuid.uuid4,unique=True, max_length=36)
     user = models.ForeignKey(User, related_name='properties', on_delete=models.CASCADE)
     # profileImage = models.ImageField(upload_to="post_images", default='default.jpg')
     profileImage = CloudinaryField('image')
