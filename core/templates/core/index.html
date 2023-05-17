@@ -54,20 +54,50 @@
                 <p class="category-paragraph">Become your own landlord by buying a house.The following are on sale</p>
                 <div class="tab"></div>
                 <div class="houses-i-wrapper">
-                    {% for random_property in random_properties %}
-                    <a class="property-link" href="{% url 'property_page' random_property.slug %}">
+                    <!-- {% for random_property in random_properties %}
+                    <a class="property-link" href="{% url 'property_page' random_property.slug %}"> -->
                         <div class="single-house">
-                            <img class="house-image" src="{{random_property.image.url}}" alt=""/>
+                            <img class="house-image" src="{% static 'images/house2.jpg' %}" alt=""/>
                             <div class="house-content">
                                 <div class="title-price">
-                                    <p>{{random_property.title}}</p>
-                                    <p>Kes {{random_property.cost}}</p>
+                                    <p>Joyous Family Home</p>
+                                    <p>Kes 80000</p>
                                 </div>
-                                <p class="location-paragraph"><i class="fa-solid fa-location-dot"></i>{{random_property.location}}</p>
+                                <p class="location-paragraph"><i class="fa-solid fa-location-dot"></i>Nairobi, Kagundo Road</p>
                             </div>
                         </div>
-                    </a>
-                    {% endfor %}
+                        <div class="single-house">
+                            <img class="house-image" src="{% static 'images/house2.jpg' %}" alt="" />
+                            <div class="house-content">
+                                <div class="title-price">
+                                    <p>Joyous Family Home</p>
+                                
+                                <div class="single-house">
+                                    <img class="house-image" src="{% static 'images/house2.jpg' %}" alt="" />
+                                    <div class="house-content">
+                                        <div class="title-price">
+                                            <p>Joyous Family Home</p>
+                                            <p>Kes 80000</p>
+                                        </div>
+                                        <p class="location-paragraph"><i class="fa-solid fa-location-dot"></i>Nairobi, Kagundo Road</p>
+                                    </div>
+                                </div>
+                                <div class="single-house">
+                                    <img class="house-image" src="{% static 'images/house2.jpg' %}" alt="" />
+                                    <div class="house-content">
+                                        <div class="title-price">
+                                            <p>Joyous Family Home</p>
+                                            <p>Kes 80000</p>
+                                        </div>
+                                        <p class="location-paragraph"><i class="fa-solid fa-location-dot"></i>Nairobi, Kagundo Road</p>
+                                    </div>
+                                </div>    <p>Kes 80000</p>
+                                </div>
+                                <p class="location-paragraph"><i class="fa-solid fa-location-dot"></i>Nairobi, Kagundo Road</p>
+                            </div>
+                        </div>
+                    <!-- </a>
+                    {% endfor %} -->
                 </div>
 
                 <a href="{% url 'properties' %}"><button class="all-p-btn">All properties</button></a>
